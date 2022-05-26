@@ -9,15 +9,15 @@ import Foundation
 
 // MARK: - RegionCodable
 class RegionCodable: Codable {
-    var data: [Data]?
+    var data: [RegionData]?
 
-    init(data: [Data]?) {
+    init(data: [RegionData]?) {
         self.data = data
     }
 }
 
 // MARK: - Datum
-class Data: Codable {
+class RegionData: Codable {
     var id, type: String?
     var attributes: Attributes?
 
