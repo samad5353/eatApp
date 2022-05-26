@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  RegionSelectorViewController.swift
 //  eatApp
 //
 //  Created by Abdul Samad on 26/05/2022.
@@ -7,13 +7,10 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class RegionSelectorViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
     }
-
-
 }
-

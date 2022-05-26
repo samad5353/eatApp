@@ -195,3 +195,6 @@ Dependencies/
 **/xcshareddata/WorkspaceSettings.xcsettings
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,xcode,swift,cocoapods,fastlane,objective-c
+eatApp.xcworkspace/contents.xcworkspacedata
+eatApp.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+eatApp.xcodeproj/xcshareddata/xcschemes/eatApp.xcscheme
