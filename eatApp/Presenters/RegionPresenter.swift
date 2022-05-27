@@ -7,9 +7,14 @@
 
 import Foundation
 
+@objc protocol RegionPresenterDelegate: AnyObject {
+    @objc optional func reloadRegions()
+}
+
 class RegionPresenter {
     
     var regions: [RegionData]?
+    weak var delegate: RegionPresenterDelegate?
     
     func getRegionsFromAPI() {
         // Make api call for regions
@@ -19,6 +24,7 @@ class RegionPresenter {
                 return
             }
             self.regions = response?.data
+            self.delegate?.reloadRegions?()
         }
     }
 }
