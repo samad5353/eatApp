@@ -38,7 +38,9 @@ extension RegionSelectorViewController: UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        if let items = presenter?.regions?[indexPath.row].id {
+            UserDefaults.standard.set(items, forKey: "region_id")
+        }
     }
 }
 
