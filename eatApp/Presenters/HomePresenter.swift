@@ -7,15 +7,28 @@
 
 import Foundation
 
+@objc protocol HomePresenterDelegate: AnyObject {
+    @objc optional func showRegionLocator()
+}
+
 class HomePresenter {
     
     var regionId: String? {
         return UserDefaults.standard.string(forKey: "region_id")
     }
+    weak var delegate: HomePresenterDelegate?
     
-    init() {
-        if regionId == nil {
-            // 
+    func checkIfRegionIdSet() {
+        if self.regionId == nil {
+            // show region selctor
+            self.delegate?.showRegionLocator?()
+        } else {
+            // make api call for restaurents
+            self.makeAPICallForRestuarents()
         }
+    }
+    
+    func makeAPICallForRestuarents() {
+        // make api call
     }
 }

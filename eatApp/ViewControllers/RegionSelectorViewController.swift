@@ -10,7 +10,7 @@ import UIKit
 class RegionSelectorViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
-    
+    @objc var onSelectedRegion: (() -> Void)?
     var presenter: RegionPresenter?
     
     override func viewDidLoad() {
@@ -40,6 +40,9 @@ extension RegionSelectorViewController: UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let items = presenter?.regions?[indexPath.row].id {
             UserDefaults.standard.set(items, forKey: "region_id")
+            self.dismiss(animated: true, completion: {
+                self.onSelectedRegion?()
+            })
         }
     }
 }
