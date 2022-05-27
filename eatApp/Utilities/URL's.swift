@@ -13,4 +13,7 @@ struct APPURL {
     struct Region {
         static let regions = "regions?"
     }
+    struct Restuarents {
+        static let restuarents = "restaurants?page=%@"
+    }
 }

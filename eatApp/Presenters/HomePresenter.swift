@@ -30,5 +30,9 @@ class HomePresenter {
     
     func makeAPICallForRestuarents() {
         // make api call
+        let url = String(format: APPURL.Restuarents.restuarents, "1")
+        NetworkManager.shared.makeAPI(urlString: url, method: .get) { (response: RestuarentsCD?) in
+            print(response)
+        }
     }
 }

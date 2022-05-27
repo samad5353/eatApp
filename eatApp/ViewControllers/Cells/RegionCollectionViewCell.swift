@@ -21,7 +21,7 @@ class RegionCollectionViewCell: UICollectionViewCell {
     func setupCell(items: RegionData?) {
         self.containerView.layer.applyRegionCardsShadowCell()
         if let imageURL = items?.attributes?.imageURL, let url = URL(string:imageURL ) {
-            regionImage.af_setImage(withURL: url)
+            regionImage.af.setImage(withURL: url)
         }
         self.regionName.text = items?.attributes?.name
     }
