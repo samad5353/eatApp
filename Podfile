@@ -10,5 +10,7 @@ target 'eatApp' do
 pod 'RealmSwift'
 pod 'Alamofire'
 pod 'SwiftyBeaver'
+pod 'lottie-ios'
+pod 'AlamofireImage'
 
 end

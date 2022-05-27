@@ -22,12 +22,14 @@ class NetworkManager {
     }
     
     func makeAPI<T: Decodable>(urlString: String, method: HTTPMethod? = .post, params: [String: Any]? = nil, paramsCodable: Encodable? = nil, isBodyParamRequest: Bool = false, completion: @escaping (T?) -> Void) {
+        Utility.shared.showActivity()
         let completeURL = APPURL.BaseURL + urlString
         Log.warning(completeURL)
         let headers: HTTPHeaders = self.getAllHeaderValues()
         AF.request(completeURL, method: method!, parameters: params, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { response in
                 // check for errors
+                Utility.shared.hideActivity()
                 switch response.result {
                 case .success:
                     do {
