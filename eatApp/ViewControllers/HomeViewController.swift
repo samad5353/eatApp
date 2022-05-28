@@ -19,6 +19,10 @@ class HomeViewController: UIViewController {
         self.presenter?.delegate = self
         presenter?.checkIfRegionIdSet()
     }
+    
+    @IBAction func filterButtonClicked(_ sender: UIControl) {
+        self.performSegue(withIdentifier: "showFilter", sender: nil)
+    }
 }
 
 extension HomeViewController: HomePresenterDelegate {

@@ -22,6 +22,7 @@
 		121BA3932840931400C62EEB /* RegionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121BA3922840931400C62EEB /* RegionCollectionViewCell.swift */; };
 		121BA3972840B46000C62EEB /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121BA3962840B46000C62EEB /* HomePresenter.swift */; };
 		12E65AF728413E1E00F2A1DA /* RestuarentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E65AF628413E1E00F2A1DA /* RestuarentTableViewCell.swift */; };
+		12E65AFB28422FBA00F2A1DA /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E65AFA28422FBA00F2A1DA /* FilterViewController.swift */; };
 		12F2474F2841234500B1A5BE /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F2474E2841234500B1A5BE /* ActivityIndicator.swift */; };
 		12F24751284123FE00B1A5BE /* loader.json in Resources */ = {isa = PBXBuildFile; fileRef = 12F24750284123FE00B1A5BE /* loader.json */; };
 		12F247542841241F00B1A5BE /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F247532841241F00B1A5BE /* Utilities.swift */; };
@@ -46,6 +47,7 @@
 		121BA3922840931400C62EEB /* RegionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionCollectionViewCell.swift; sourceTree = "<group>"; };
 		121BA3962840B46000C62EEB /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		12E65AF628413E1E00F2A1DA /* RestuarentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestuarentTableViewCell.swift; sourceTree = "<group>"; };
+		12E65AFA28422FBA00F2A1DA /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		12F2474E2841234500B1A5BE /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		12F24750284123FE00B1A5BE /* loader.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loader.json; sourceTree = "<group>"; };
 		12F247532841241F00B1A5BE /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 				121BA3942840931900C62EEB /* Cells */,
 				121BA38B283F902D00C62EEB /* RegionSelectorViewController.swift */,
 				121BA38D283F90CA00C62EEB /* HomeViewController.swift */,
+				12E65AFA28422FBA00F2A1DA /* FilterViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				12E65AF728413E1E00F2A1DA /* RestuarentTableViewCell.swift in Sources */,
 				12F247542841241F00B1A5BE /* Utilities.swift in Sources */,
 				121BA390283F91B800C62EEB /* RegionPresenter.swift in Sources */,
+				12E65AFB28422FBA00F2A1DA /* FilterViewController.swift in Sources */,
 				12F247562841266F00B1A5BE /* Extensions.swift in Sources */,
 				121BA36B283F766600C62EEB /* AppDelegate.swift in Sources */,
 				121BA3932840931400C62EEB /* RegionCollectionViewCell.swift in Sources */,
