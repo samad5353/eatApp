@@ -9,11 +9,11 @@ import Foundation
 
 // MARK: - RestuarentsCD
 class RestuarentsCD: Codable {
-    var data: [Datum]?
+    var data: [RestaurentData]?
     var meta: Meta?
     var links: Links?
     
-    init(data: [Datum]?, meta: Meta?, links: Links?) {
+    init(data: [RestaurentData]?, meta: Meta?, links: Links?) {
         self.data = data
         self.meta = meta
         self.links = links
@@ -21,7 +21,7 @@ class RestuarentsCD: Codable {
 }
 
 // MARK: - Datum
-class Datum: Codable {
+class RestaurentData: Codable {
     var id, type: String?
     var attributes: RestuarentAttributes?
     var relationships: Relationships?
