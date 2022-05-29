@@ -26,17 +26,16 @@ class FilterViewController: UIViewController {
             each.backgroundColor = .clear
             each.layer.borderWidth = 1
             each.layer.borderColor = UIColor.separator.cgColor
-            if each.tag == 0 {
+            if each.tag == presenter?.selectedPriceRange {
                 each.backgroundColor = UIColor(named: "green")
             }
             for each in priceSelectionLabelCollection {
-                if each.tag == 0 {
+                if each.tag == presenter?.selectedPriceRange {
                     each.textColor = .white
                 } else {
                     each.textColor = UIColor(named: "priceDeselect")
                 }
             }
-            presenter?.selectedPriceRange = 0
         }
     }
 }
@@ -47,7 +46,16 @@ extension FilterViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func applyFilterButtonClicked(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: {
+            self.presenter?.finalFilterApply()
+        })
+    }
+    
     @IBAction func resetButtonClicked(_ sender: UIButton) {
+        presenter?.selectedCuisine = presenter?.selectedCuisine.filter { $0?.id == "00000"} ?? []
+        presenter?.selectedNeighbourhood = presenter?.selectedNeighbourhood.filter { $0?.id == "00000"} ?? []
+        presenter?.selectedPriceRange = 0
         setupView()
     }
     
@@ -71,6 +79,15 @@ extension FilterViewController {
             }
         }
     }
+    
+    private func showDetails() {
+        // show region vc and set region id
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        if let viewController = storyboard.instantiateViewController(withIdentifier: "FilterDetailViewController") as? FilterDetailViewController {
+            viewController.presenter = presenter
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
+    }
 }
 
 extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
@@ -89,5 +106,8 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
         return "FILTER BY"
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter?.filterListingMode = FilterListing(rawValue: indexPath.row) ?? .cusine
+        showDetails()
+    }
 }

@@ -16,4 +16,10 @@ struct APPURL {
     struct Restuarents {
         static let restuarents = "restaurants?page=%@"
     }
+    struct Cuisines {
+        static let cuisines = "cuisines?"
+    }
+    struct Neighbourhood {
+        static let neighbourhood = "neighborhoods?"
+    }
 }

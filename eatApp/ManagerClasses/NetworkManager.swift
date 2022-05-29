@@ -21,8 +21,10 @@ class NetworkManager {
         return headers
     }
     
-    func makeAPI<T: Decodable>(urlString: String, method: HTTPMethod? = .post, params: [String: Any]? = nil, paramsCodable: Encodable? = nil, isBodyParamRequest: Bool = false, completion: @escaping (T?) -> Void) {
-        Utility.shared.showActivity()
+    func makeAPI<T: Decodable>(urlString: String, method: HTTPMethod? = .post, params: [String: Any]? = nil, isSilentCall: Bool = false, completion: @escaping (T?) -> Void) {
+        if !isSilentCall {
+            Utility.shared.showActivity()
+        }
         let completeURL = APPURL.BaseURL + urlString
         Log.warning(completeURL)
         let headers: HTTPHeaders = self.getAllHeaderValues()

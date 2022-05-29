@@ -25,6 +25,9 @@
 		12E65AFB28422FBA00F2A1DA /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E65AFA28422FBA00F2A1DA /* FilterViewController.swift */; };
 		12E65AFD28436CED00F2A1DA /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E65AFC28436CED00F2A1DA /* FilterTableViewCell.swift */; };
 		12E65AFF28437CFA00F2A1DA /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12E65AFE28437CFA00F2A1DA /* Color.xcassets */; };
+		12E65B0128438BB400F2A1DA /* CusinesCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E65B0028438BB400F2A1DA /* CusinesCodable.swift */; };
+		12E65B032843900900F2A1DA /* FilterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E65B022843900900F2A1DA /* FilterDetailViewController.swift */; };
+		12E65B05284393AD00F2A1DA /* FilterDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E65B04284393AD00F2A1DA /* FilterDetailTableViewCell.swift */; };
 		12F2474F2841234500B1A5BE /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F2474E2841234500B1A5BE /* ActivityIndicator.swift */; };
 		12F24751284123FE00B1A5BE /* loader.json in Resources */ = {isa = PBXBuildFile; fileRef = 12F24750284123FE00B1A5BE /* loader.json */; };
 		12F247542841241F00B1A5BE /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F247532841241F00B1A5BE /* Utilities.swift */; };
@@ -52,6 +55,9 @@
 		12E65AFA28422FBA00F2A1DA /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		12E65AFC28436CED00F2A1DA /* FilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
 		12E65AFE28437CFA00F2A1DA /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
+		12E65B0028438BB400F2A1DA /* CusinesCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CusinesCodable.swift; sourceTree = "<group>"; };
+		12E65B022843900900F2A1DA /* FilterDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterDetailViewController.swift; sourceTree = "<group>"; };
+		12E65B04284393AD00F2A1DA /* FilterDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterDetailTableViewCell.swift; sourceTree = "<group>"; };
 		12F2474E2841234500B1A5BE /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		12F24750284123FE00B1A5BE /* loader.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loader.json; sourceTree = "<group>"; };
 		12F247532841241F00B1A5BE /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
@@ -142,6 +148,7 @@
 				121BA38B283F902D00C62EEB /* RegionSelectorViewController.swift */,
 				121BA38D283F90CA00C62EEB /* HomeViewController.swift */,
 				12E65AFA28422FBA00F2A1DA /* FilterViewController.swift */,
+				12E65B022843900900F2A1DA /* FilterDetailViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -162,6 +169,7 @@
 			children = (
 				121BA388283F8A2400C62EEB /* RegionCodable.swift */,
 				12F247572841361B00B1A5BE /* RestuarentCodables.swift */,
+				12E65B0028438BB400F2A1DA /* CusinesCodable.swift */,
 			);
 			path = "Codable Classes";
 			sourceTree = "<group>";
@@ -172,6 +180,7 @@
 				121BA3922840931400C62EEB /* RegionCollectionViewCell.swift */,
 				12E65AF628413E1E00F2A1DA /* RestuarentTableViewCell.swift */,
 				12E65AFC28436CED00F2A1DA /* FilterTableViewCell.swift */,
+				12E65B04284393AD00F2A1DA /* FilterDetailTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -333,6 +342,9 @@
 				121BA389283F8A2400C62EEB /* RegionCodable.swift in Sources */,
 				121BA3972840B46000C62EEB /* HomePresenter.swift in Sources */,
 				121BA38C283F902D00C62EEB /* RegionSelectorViewController.swift in Sources */,
+				12E65B0128438BB400F2A1DA /* CusinesCodable.swift in Sources */,
+				12E65B05284393AD00F2A1DA /* FilterDetailTableViewCell.swift in Sources */,
+				12E65B032843900900F2A1DA /* FilterDetailViewController.swift in Sources */,
 				12F247582841361B00B1A5BE /* RestuarentCodables.swift in Sources */,
 				12F2474F2841234500B1A5BE /* ActivityIndicator.swift in Sources */,
 				12E65AF728413E1E00F2A1DA /* RestuarentTableViewCell.swift in Sources */,

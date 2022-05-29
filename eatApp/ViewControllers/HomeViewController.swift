@@ -53,10 +53,6 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         cell.setupCell(items: presenter?.restuarents?[indexPath.row])
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("")
-    }
 }
 
 extension HomeViewController {

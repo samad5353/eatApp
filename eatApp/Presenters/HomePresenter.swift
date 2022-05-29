@@ -12,6 +12,11 @@ import Foundation
     @objc optional func reloadHome()
 }
 
+enum FilterListing: Int {
+    case cusine = 0
+    case neighbourhood = 1
+}
+
 class HomePresenter {
     
     var regionId: String? {
@@ -21,6 +26,11 @@ class HomePresenter {
     var restuarents: [RestaurentData]?
     var selectedPriceRange: Int = 0
     var filterArray = ["Cuisines", "Neighbourhood"]
+    var filterListingMode: FilterListing = .cusine
+    var cuinesArray: [CuisinesData]?
+    var neighbourhoodArray: [CuisinesData]?
+    var selectedCuisine = [CuisinesData?]()
+    var selectedNeighbourhood = [CuisinesData?]()
     
     func checkIfRegionIdSet() {
         if self.regionId == nil {
@@ -42,6 +52,52 @@ class HomePresenter {
             }
             self.restuarents = response?.data
             self.delegate?.reloadHome?()
+            self.makeAPICallForCuisines()
         }
+    }
+    
+    func makeAPICallForCuisines() {
+        NetworkManager.shared.makeAPI(urlString: APPURL.Cuisines.cuisines, method: .get, isSilentCall: true) { (response: CuisinesCD?) in
+            if response == nil {
+                // throw error
+                return
+            }
+            self.cuinesArray = response?.data
+            self.createAndAppendAllCuisine()
+            if let cuinesArray = self.cuinesArray {
+                self.selectedCuisine.append(cuinesArray.first)
+            }
+            self.makeAPICallForNeighbourhood()
+        }
+    }
+    
+    func makeAPICallForNeighbourhood() {
+        NetworkManager.shared.makeAPI(urlString: APPURL.Neighbourhood.neighbourhood, method: .get, isSilentCall: true) { (response: CuisinesCD?) in
+            if response == nil {
+                // throw error
+                return
+            }
+            self.neighbourhoodArray = response?.data
+            self.createAndAppendAllNeighbourHood()
+            if let neighbourhoodArray = self.neighbourhoodArray {
+                self.selectedNeighbourhood.append(neighbourhoodArray.first)
+            }
+        }
+    }
+    
+    private func createAndAppendAllCuisine() {
+        let attr = CusinesAttributes(name: "All Cuisines")
+        let cuisine = CuisinesData(id: "00000", type: "cuisine", attributes: attr)
+        self.cuinesArray?.insert(cuisine, at: 0)
+    }
+    
+    private func createAndAppendAllNeighbourHood() {
+        let attr = CusinesAttributes(name: "All Neighbourhoods")
+        let cuisine = CuisinesData(id: "00000", type: "neighbourhoods", attributes: attr)
+        self.neighbourhoodArray?.insert(cuisine, at: 0)
+    }
+    
+    func finalFilterApply() {
+        
     }
 }
