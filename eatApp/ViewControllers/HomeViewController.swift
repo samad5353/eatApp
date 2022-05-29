@@ -53,6 +53,19 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         cell.setupCell(items: presenter?.restuarents?[indexPath.row])
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == (presenter?.restuarents?.count ?? 0) - 10 {
+            if presenter?.pageTotalCount != presenter?.restuarents?.count {
+                presenter?.currentPage += 1
+                if presenter?.filterCompletedURL == "" {
+                    presenter?.makeAPICallForRestuarents()
+                } else {
+                    presenter?.makeAPICallForRestuarents(url: presenter?.filterCompletedURL ?? "")
+                }
+            }
+        }
+    }
 }
 
 extension HomeViewController {

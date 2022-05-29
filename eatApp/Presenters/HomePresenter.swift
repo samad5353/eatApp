@@ -33,6 +33,9 @@ class HomePresenter {
     var selectedNeighbourhood = [CuisinesData?]()
     
     var filterCompletedURL = ""
+    var currentPage: Int = 1
+    var pageTotalCount = 0
+    var limit = 0
     
     func checkIfRegionIdSet() {
         if self.regionId == nil {
@@ -46,13 +49,16 @@ class HomePresenter {
     
     func makeAPICallForRestuarents(url: String = APPURL.Restuarents.restuarents, isfilterAPICalled: Bool = false) {
         // make api call
-        let url = String(format: url, "1")
+        let url = String(format: url, currentPage)
         NetworkManager.shared.makeAPI(urlString: url, method: .get) { (response: RestuarentsCD?) in
             if response == nil {
                 // throw error
                 return
             }
             self.restuarents = response?.data
+            self.pageTotalCount = response?.meta?.totalCount ?? 0
+            self.limit = response?.meta?.limit ?? 0
+            
             self.delegate?.reloadHome?()
             if !isfilterAPICalled  {
                 self.makeAPICallForCuisines()
@@ -156,7 +162,7 @@ class HomePresenter {
             }
         }
         let finalURL = APPURL.Restuarents.restuarents + filterCompletedURL
-        let url = String(format: finalURL, "1")
+        let url = String(format: finalURL, currentPage)
         makeAPICallForRestuarents(url: url, isfilterAPICalled: true)
     }
 }

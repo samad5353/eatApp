@@ -59,6 +59,7 @@ extension FilterViewController {
         presenter?.selectedCuisine.removeAll()
         presenter?.selectedNeighbourhood.removeAll()
         presenter?.selectedPriceRange = 0
+        presenter?.filterCompletedURL = ""
         setupView()
         tableView.reloadData()
     }
