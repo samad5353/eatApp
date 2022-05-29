@@ -15,7 +15,8 @@ class HomeViewController: UIViewController {
     var presenter: HomePresenter?
     var searchActive : Bool = false
     let blankView = UIView(frame: CGRect(x: 0, y: 120, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 120))
-
+    let blurEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter = HomePresenter()
@@ -42,6 +43,7 @@ extension HomeViewController: HomePresenterDelegate {
     
     func reloadHome() {
         blankView.removeFromSuperview()
+        blurEffectView.removeFromSuperview()
         tableView.reloadData()
     }
 }
@@ -93,7 +95,9 @@ extension HomeViewController: UISearchBarDelegate {
         searchActive = true
         searchBar.showsCancelButton = true
         if searchActive {
-            blankView.backgroundColor = .black.withAlphaComponent(0.5)
+            blurEffectView.frame = blankView.bounds
+            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            blankView.addSubview(blurEffectView)
             self.view.addSubview(blankView)
         }
     }

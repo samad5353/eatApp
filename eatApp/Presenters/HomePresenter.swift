@@ -58,7 +58,9 @@ class HomePresenter {
             self.restuarents = response?.data
             self.pageTotalCount = response?.meta?.totalCount ?? 0
             self.limit = response?.meta?.limit ?? 0
-            
+            if self.selectedPriceRange != 0 {
+                self.restuarents = self.restuarents?.filter { $0.attributes?.priceLevel == self.selectedPriceRange }
+            }
             self.delegate?.reloadHome?()
             if !isfilterAPICalled  {
                 self.makeAPICallForCuisines()
