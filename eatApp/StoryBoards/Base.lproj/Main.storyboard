@@ -274,7 +274,7 @@
                     <connections>
                         <outlet property="tableView" destination="v1b-Ne-N7C" id="jj6-IA-Ggb"/>
                         <segue destination="Pmc-d9-afY" kind="presentation" identifier="showRegion" modalPresentationStyle="fullScreen" id="iRx-Mt-GwG"/>
-                        <segue destination="sbQ-y1-qa3" kind="presentation" identifier="showFilter" modalPresentationStyle="overFullScreen" id="nmv-M0-g2o"/>
+                        <segue destination="4tk-WP-Nib" kind="presentation" identifier="showFilter" modalPresentationStyle="overFullScreen" id="nmv-M0-g2o"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8i9-Ak-cRF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -405,6 +405,7 @@
         <!--Navigation Controller-->
         <scene sceneID="E2d-kr-9hw">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NAA-al-BmN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="siP-D0-Lld" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="iqm-lN-HDA">
@@ -416,7 +417,6 @@
                         <segue destination="cma-Ff-TTC" kind="relationship" relationship="rootViewController" id="VVu-d5-01V"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="NAA-al-BmN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-86.956521739130437" y="-79.017857142857139"/>
         </scene>
@@ -637,6 +637,10 @@
                                                 <constraint firstItem="JAo-Kn-zgb" firstAttribute="top" relation="greaterThanOrEqual" secondItem="sYj-fY-g5G" secondAttribute="top" constant="12" id="bxh-aA-Jab"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="filterIcon" destination="XD4-mY-bnT" id="mtN-I0-R58"/>
+                                            <outlet property="filterLabel" destination="JAo-Kn-zgb" id="mX0-ew-poY"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -686,6 +690,23 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Md7-m9-o0a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1855.072463768116" y="669.64285714285711"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="wks-Hf-aRS">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="4tk-WP-Nib" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="G63-dA-QyO">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="sbQ-y1-qa3" kind="relationship" relationship="rootViewController" id="5ed-ye-XbW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HOA-pc-j5I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="944.92753623188412" y="669.64285714285711"/>
         </scene>

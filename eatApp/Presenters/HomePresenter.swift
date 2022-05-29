@@ -20,6 +20,7 @@ class HomePresenter {
     weak var delegate: HomePresenterDelegate?
     var restuarents: [RestaurentData]?
     var selectedPriceRange: Int = 0
+    var filterArray = ["Cuisines", "Neighbourhood"]
     
     func checkIfRegionIdSet() {
         if self.regionId == nil {

@@ -53,12 +53,16 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         cell.setupCell(items: presenter?.restuarents?[indexPath.row])
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("")
+    }
 }
 
 extension HomeViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showFilter" {
-            if let viewController = segue.destination as? FilterViewController {
+            if let navController = segue.destination as? UINavigationController, let viewController = navController.viewControllers.first as? FilterViewController {
                 viewController.presenter = self.presenter
             }
         }
