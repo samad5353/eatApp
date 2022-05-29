@@ -31,7 +31,7 @@ class HomePresenter {
     var neighbourhoodArray: [CuisinesData]?
     var selectedCuisine = [CuisinesData?]()
     var selectedNeighbourhood = [CuisinesData?]()
-    
+    var searchKey = ""
     var filterCompletedURL = ""
     var currentPage: Int = 1
     var pageTotalCount = 0
@@ -164,5 +164,11 @@ class HomePresenter {
         let finalURL = APPURL.Restuarents.restuarents + filterCompletedURL
         let url = String(format: finalURL, currentPage)
         makeAPICallForRestuarents(url: url, isfilterAPICalled: true)
+    }
+    
+    func makeAPICallForSearch() {
+        let searchQuery = "&q=\(self.searchKey)"
+        let finalurl = APPURL.Restuarents.restuarents + searchQuery
+        makeAPICallForRestuarents(url: finalurl, isfilterAPICalled: true)
     }
 }

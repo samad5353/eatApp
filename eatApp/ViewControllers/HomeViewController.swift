@@ -10,9 +10,12 @@ import UIKit
 class HomeViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     var presenter: HomePresenter?
-    
+    var searchActive : Bool = false
+    let blankView = UIView(frame: CGRect(x: 0, y: 120, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 120))
+
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter = HomePresenter()
@@ -38,6 +41,7 @@ extension HomeViewController: HomePresenterDelegate {
     }
     
     func reloadHome() {
+        blankView.removeFromSuperview()
         tableView.reloadData()
     }
 }
@@ -75,5 +79,40 @@ extension HomeViewController {
                 viewController.presenter = self.presenter
             }
         }
+    }
+}
+
+extension HomeViewController: UISearchBarDelegate {
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchActive = false
+        blankView.removeFromSuperview()
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchActive = true
+        searchBar.showsCancelButton = true
+        if searchActive {
+            blankView.backgroundColor = .black.withAlphaComponent(0.5)
+            self.view.addSubview(blankView)
+        }
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.searchTextField.resignFirstResponder()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        presenter?.searchKey = searchText
+        presenter?.makeAPICallForSearch()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchActive = false
+        searchBar.showsCancelButton = false
+        searchBar.searchTextField.text = ""
+        searchBar.searchTextField.resignFirstResponder()
+        presenter?.searchKey = ""
+        presenter?.makeAPICallForRestuarents()
     }
 }

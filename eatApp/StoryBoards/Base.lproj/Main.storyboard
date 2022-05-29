@@ -25,6 +25,9 @@
                                         <rect key="frame" x="0.0" y="69" width="414" height="51"/>
                                         <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="cma-Ff-TTC" id="vZ6-QX-aww"/>
+                                        </connections>
                                     </searchBar>
                                 </subviews>
                                 <color key="backgroundColor" red="0.38823529411764707" green="0.71372549019607845" blue="0.3529411764705882" alpha="1" colorSpace="calibratedRGB"/>
@@ -280,6 +283,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="dv3-Ys-BC6"/>
                     <connections>
+                        <outlet property="searchBar" destination="Kvj-Yp-4wv" id="mht-F8-qJR"/>
                         <outlet property="tableView" destination="v1b-Ne-N7C" id="jj6-IA-Ggb"/>
                         <segue destination="Pmc-d9-afY" kind="presentation" identifier="showRegion" modalPresentationStyle="fullScreen" id="iRx-Mt-GwG"/>
                         <segue destination="4tk-WP-Nib" kind="presentation" identifier="showFilter" id="nmv-M0-g2o"/>
