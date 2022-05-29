@@ -13,6 +13,8 @@ class FilterViewController: UIViewController {
     @IBOutlet var priceSelectionCollection: [UIControl]!
     @IBOutlet var priceSelectionLabelCollection: [UILabel]!
     
+    var presenter: HomePresenter?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -26,8 +28,15 @@ class FilterViewController: UIViewController {
             each.layer.borderColor = UIColor.separator.cgColor
             if each.tag == 0 {
                 each.backgroundColor = UIColor(named: "green")
-                priceSelectionLabelCollection[0].textColor = .white
             }
+            for each in priceSelectionLabelCollection {
+                if each.tag == 0 {
+                    each.textColor = .white
+                } else {
+                    each.textColor = UIColor(named: "priceDeselect")
+                }
+            }
+            presenter?.selectedPriceRange = 0
         }
     }
 }
@@ -39,13 +48,14 @@ extension FilterViewController {
     }
     
     @IBAction func resetButtonClicked(_ sender: UIButton) {
-        
+        setupView()
     }
     
     @IBAction func priceSelectionButtonClicked(_ sender: UIControl) {
         for each in priceSelectionCollection {
             if each.tag == sender.tag {
                 sender.backgroundColor = UIColor(named: "green")
+                presenter?.selectedPriceRange = sender.tag
             } else {
                 each.backgroundColor = .clear
                 each.layer.borderWidth = 1

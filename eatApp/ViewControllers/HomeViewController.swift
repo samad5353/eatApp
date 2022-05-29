@@ -54,3 +54,13 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
 }
+
+extension HomeViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showFilter" {
+            if let viewController = segue.destination as? FilterViewController {
+                viewController.presenter = self.presenter
+            }
+        }
+    }
+}
