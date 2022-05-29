@@ -32,6 +32,8 @@ class HomePresenter {
     var selectedCuisine = [CuisinesData?]()
     var selectedNeighbourhood = [CuisinesData?]()
     
+    var filterCompletedURL = ""
+    
     func checkIfRegionIdSet() {
         if self.regionId == nil {
             // show region selctor
@@ -42,9 +44,9 @@ class HomePresenter {
         }
     }
     
-    func makeAPICallForRestuarents() {
+    func makeAPICallForRestuarents(url: String = APPURL.Restuarents.restuarents, isfilterAPICalled: Bool = false) {
         // make api call
-        let url = String(format: APPURL.Restuarents.restuarents, "1")
+        let url = String(format: url, "1")
         NetworkManager.shared.makeAPI(urlString: url, method: .get) { (response: RestuarentsCD?) in
             if response == nil {
                 // throw error
@@ -52,7 +54,9 @@ class HomePresenter {
             }
             self.restuarents = response?.data
             self.delegate?.reloadHome?()
-            self.makeAPICallForCuisines()
+            if !isfilterAPICalled  {
+                self.makeAPICallForCuisines()
+            }
         }
     }
     
@@ -115,7 +119,44 @@ class HomePresenter {
         return "(\(string))"
     }
     
+    func getIdsForNeighbourhood() -> String {
+        var string = ""
+        for each in self.selectedNeighbourhood {
+            if string == "" {
+                string += each?.id ?? ""
+            } else {
+                string += "," + (each?.id ?? "")
+            }
+        }
+        return "&neighborhood_id=\(string)"
+    }
+    
+    func getIdsForCusisines() -> String {
+        var string = ""
+        for each in self.selectedCuisine {
+            if string == "" {
+                string += each?.id ?? ""
+            } else {
+                string += "," + (each?.id ?? "")
+            }
+        }
+        return "&cuisine_id=\(string)"
+    }
+    
     func finalFilterApply() {
-        
+        filterCompletedURL = ""
+        if selectedCuisine.count > 0 {
+            filterCompletedURL = getIdsForCusisines()
+        }
+        if selectedNeighbourhood.count > 0 {
+            if filterCompletedURL == "" {
+                filterCompletedURL = getIdsForNeighbourhood()
+            } else {
+                filterCompletedURL += getIdsForNeighbourhood()
+            }
+        }
+        let finalURL = APPURL.Restuarents.restuarents + filterCompletedURL
+        let url = String(format: finalURL, "1")
+        makeAPICallForRestuarents(url: url, isfilterAPICalled: true)
     }
 }

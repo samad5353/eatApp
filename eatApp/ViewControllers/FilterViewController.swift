@@ -43,6 +43,9 @@ class FilterViewController: UIViewController {
 extension FilterViewController {
     
     @IBAction func cancelButtonClicked(_ sender: UIButton) {
+        presenter?.selectedCuisine.removeAll()
+        presenter?.selectedNeighbourhood.removeAll()
+        presenter?.selectedPriceRange = 0
         self.dismiss(animated: true, completion: nil)
     }
     

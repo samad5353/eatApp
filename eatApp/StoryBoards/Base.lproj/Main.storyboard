@@ -35,9 +35,15 @@
                                     <constraint firstAttribute="bottom" secondItem="Kvj-Yp-4wv" secondAttribute="bottom" id="oGz-Dk-XLY"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Results" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="697-qm-PJy">
+                                <rect key="frame" x="163.5" y="438" width="87.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" red="0.52549019610000003" green="0.52549019610000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="v1b-Ne-N7C">
                                 <rect key="frame" x="0.0" y="120" width="414" height="776"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RestuarentTableViewCell" rowHeight="320" id="sBz-w6-kI2" customClass="RestuarentTableViewCell" customModule="eatApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="320"/>
@@ -266,7 +272,9 @@
                             <constraint firstItem="xAo-9C-fqR" firstAttribute="top" secondItem="5nd-fc-d0d" secondAttribute="top" id="Lb8-vn-Ve3"/>
                             <constraint firstAttribute="bottom" secondItem="O2I-Oo-nrD" secondAttribute="bottom" constant="22" id="OJ5-ag-hJl"/>
                             <constraint firstItem="hns-75-PJM" firstAttribute="trailing" secondItem="v1b-Ne-N7C" secondAttribute="trailing" id="TEv-79-2nW"/>
+                            <constraint firstItem="697-qm-PJy" firstAttribute="centerX" secondItem="5nd-fc-d0d" secondAttribute="centerX" id="ZHY-1l-gfN"/>
                             <constraint firstItem="xAo-9C-fqR" firstAttribute="leading" secondItem="hns-75-PJM" secondAttribute="leading" id="bNV-Js-a41"/>
+                            <constraint firstItem="697-qm-PJy" firstAttribute="centerY" secondItem="5nd-fc-d0d" secondAttribute="centerY" id="l8m-jH-kP3"/>
                             <constraint firstItem="O2I-Oo-nrD" firstAttribute="centerX" secondItem="5nd-fc-d0d" secondAttribute="centerX" id="uKL-zI-a1Z"/>
                         </constraints>
                     </view>
