@@ -10,6 +10,7 @@ import UIKit
 class FilterTableViewCell: UITableViewCell {
 
     @IBOutlet weak var filterLabel: UILabel!
+    @IBOutlet weak var filterType: UILabel!
     @IBOutlet weak var filterIcon: UIImageView!
     
     override func awakeFromNib() {

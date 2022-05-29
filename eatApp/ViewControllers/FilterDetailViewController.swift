@@ -11,15 +11,34 @@ class FilterDetailViewController: UIViewController {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
-
+    @objc var applyFilter: (() -> Void)?
+    
     var presenter: HomePresenter?
+    var tempSelectedArray = [CuisinesData?]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         titleLabel.text = presenter?.filterListingMode == .cusine ? "Cuisines" : "Neighbourhood"
+        if tempSelectedArray.count == 0 {
+            if presenter?.filterListingMode == .cusine && presenter?.selectedCuisine != nil {
+                tempSelectedArray = presenter?.selectedCuisine ?? []
+            } else if presenter?.filterListingMode == .neighbourhood && presenter?.selectedNeighbourhood != nil {
+                tempSelectedArray = presenter?.selectedNeighbourhood ?? []
+            }
+        }
     }
     
     @IBAction func backButtonClicked(_ sender: UIControl) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func applyFilterButtonClicked(_ sender: UIButton) {
+        if self.presenter?.filterListingMode == .cusine {
+            self.presenter?.selectedCuisine = self.tempSelectedArray
+        } else {
+            self.presenter?.selectedNeighbourhood = self.tempSelectedArray
+        }
+        self.applyFilter?()
         self.navigationController?.popViewController(animated: true)
     }
 }
@@ -32,7 +51,7 @@ extension FilterDetailViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "FilterDetailTableViewCell", for: indexPath) as? FilterDetailTableViewCell else { return UITableViewCell() }
-        cell.setupCell(items: presenter?.filterListingMode == .cusine ? presenter?.cuinesArray?[indexPath.row] : presenter?.neighbourhoodArray?[indexPath.row], selectedData: presenter?.filterListingMode == .cusine ? presenter?.selectedCuisine : presenter?.selectedNeighbourhood)        
+        cell.setupCell(items: presenter?.filterListingMode == .cusine ? presenter?.cuinesArray?[indexPath.row] : presenter?.neighbourhoodArray?[indexPath.row], selectedData: tempSelectedArray)        
         return cell
     }
     
@@ -46,21 +65,31 @@ extension FilterDetailViewController: UITableViewDelegate, UITableViewDataSource
                 if presenter?.filterListingMode == .cusine {
                     // remove items from selected index
                     let selectedCusine = presenter?.cuinesArray?[indexPath.row]
-                    presenter?.selectedCuisine = presenter?.selectedCuisine.filter { $0?.id != selectedCusine?.id } ?? []
+                    tempSelectedArray = tempSelectedArray.filter { $0?.id != selectedCusine?.id }
                     self.tableView.reloadData()
                 } else {
                     let selectedneigh = presenter?.neighbourhoodArray?[indexPath.row]
-                    presenter?.selectedNeighbourhood = presenter?.selectedNeighbourhood.filter { $0?.id != selectedneigh?.id } ?? []
+                    tempSelectedArray = tempSelectedArray.filter { $0?.id != selectedneigh?.id }
                     self.tableView.reloadData()
                 }
             } else {
                 if presenter?.filterListingMode == .cusine {
                     let selectedCusine = presenter?.cuinesArray?[indexPath.row]
-                    presenter?.selectedCuisine.append(selectedCusine)
+                    if tempSelectedArray.count > 0, selectedCusine?.id == "00000" {
+                        tempSelectedArray.removeAll()
+                        self.tableView.reloadData()
+                        return
+                    }
+                    tempSelectedArray.append(selectedCusine)
                     self.tableView.reloadData()
                 } else {
                     let neigh = presenter?.neighbourhoodArray?[indexPath.row]
-                    presenter?.selectedNeighbourhood.append(neigh)
+                    if tempSelectedArray.count > 0, neigh?.id == "00000" {
+                        tempSelectedArray.removeAll()
+                        self.tableView.reloadData()
+                        return
+                    }
+                    tempSelectedArray.append(neigh)
                     self.tableView.reloadData()
                 }
             }

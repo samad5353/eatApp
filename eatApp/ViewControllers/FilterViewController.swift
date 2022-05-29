@@ -53,10 +53,11 @@ extension FilterViewController {
     }
     
     @IBAction func resetButtonClicked(_ sender: UIButton) {
-        presenter?.selectedCuisine = presenter?.selectedCuisine.filter { $0?.id == "00000"} ?? []
-        presenter?.selectedNeighbourhood = presenter?.selectedNeighbourhood.filter { $0?.id == "00000"} ?? []
+        presenter?.selectedCuisine.removeAll()
+        presenter?.selectedNeighbourhood.removeAll()
         presenter?.selectedPriceRange = 0
         setupView()
+        tableView.reloadData()
     }
     
     @IBAction func priceSelectionButtonClicked(_ sender: UIControl) {
@@ -81,10 +82,12 @@ extension FilterViewController {
     }
     
     private func showDetails() {
-        // show region vc and set region id
         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         if let viewController = storyboard.instantiateViewController(withIdentifier: "FilterDetailViewController") as? FilterDetailViewController {
             viewController.presenter = presenter
+            viewController.applyFilter = {
+                self.tableView.reloadData()
+            }
             self.navigationController?.pushViewController(viewController, animated: true)
         }
     }
@@ -99,6 +102,23 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "FilterTableViewCell", for: indexPath) as? FilterTableViewCell else { return UITableViewCell() }
         cell.filterLabel.text = presenter?.filterArray[indexPath.row]
+        if indexPath.row == 0 {
+            cell.filterType.text = ""
+            if presenter?.selectedCuisine.count == 0 || presenter?.selectedCuisine.count == nil {
+                cell.filterType.text = "(all)"
+            } else {
+                // append all filters
+                cell.filterType.text = presenter?.getFilterTextForCusines()
+            }
+        } else {
+            cell.filterType.text = ""
+            if presenter?.selectedNeighbourhood.count == 0 || presenter?.selectedNeighbourhood.count == nil {
+                cell.filterType.text = "(all)"
+            } else {
+                // append all filters
+                cell.filterType.text = presenter?.getFilterTextForNeighbourhood()
+            }
+        }
         return cell
     }
     

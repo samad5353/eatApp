@@ -64,9 +64,6 @@ class HomePresenter {
             }
             self.cuinesArray = response?.data
             self.createAndAppendAllCuisine()
-            if let cuinesArray = self.cuinesArray {
-                self.selectedCuisine.append(cuinesArray.first)
-            }
             self.makeAPICallForNeighbourhood()
         }
     }
@@ -79,22 +76,43 @@ class HomePresenter {
             }
             self.neighbourhoodArray = response?.data
             self.createAndAppendAllNeighbourHood()
-            if let neighbourhoodArray = self.neighbourhoodArray {
-                self.selectedNeighbourhood.append(neighbourhoodArray.first)
-            }
         }
     }
     
-    private func createAndAppendAllCuisine() {
+    func createAndAppendAllCuisine() {
         let attr = CusinesAttributes(name: "All Cuisines")
         let cuisine = CuisinesData(id: "00000", type: "cuisine", attributes: attr)
         self.cuinesArray?.insert(cuisine, at: 0)
     }
     
-    private func createAndAppendAllNeighbourHood() {
+    func createAndAppendAllNeighbourHood() {
         let attr = CusinesAttributes(name: "All Neighbourhoods")
         let cuisine = CuisinesData(id: "00000", type: "neighbourhoods", attributes: attr)
         self.neighbourhoodArray?.insert(cuisine, at: 0)
+    }
+    
+    func getFilterTextForCusines() -> String {
+        var string = ""
+        for each in self.selectedCuisine {
+            if string == "" {
+                string += each?.attributes?.name ?? ""
+            } else {
+                string += ", " + (each?.attributes?.name ?? "") 
+            }
+        }
+        return "(\(string))"
+    }
+    
+    func getFilterTextForNeighbourhood() -> String {
+        var string = ""
+        for each in self.selectedNeighbourhood {
+            if string == "" {
+                string += each?.attributes?.name ?? ""
+            } else {
+                string += ", " + (each?.attributes?.name ?? "")
+            }
+        }
+        return "(\(string))"
     }
     
     func finalFilterApply() {

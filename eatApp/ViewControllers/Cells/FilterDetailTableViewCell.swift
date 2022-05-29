@@ -18,9 +18,15 @@ class FilterDetailTableViewCell: UITableViewCell {
     
     func setupCell(items: CuisinesData?, selectedData: [CuisinesData?]?) {
         titleLabel.text = items?.attributes?.name
-        if let selectedData = selectedData {
-            for each in selectedData where each?.id == items?.id {
+        if selectedData?.count == 0 || selectedData == nil {
+            if items?.id == "00000" {
                 self.selectionImageView.isHighlighted = true
+            }
+        } else {
+            if let selectedData = selectedData {
+                for each in selectedData where each?.id == items?.id {
+                    self.selectionImageView.isHighlighted = true
+                }
             }
         }
     }
