@@ -11,6 +11,7 @@ class HomeViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var noResultsLabel: UILabel!
     
     var presenter: HomePresenter?
     var searchActive : Bool = false
@@ -42,6 +43,7 @@ extension HomeViewController: HomePresenterDelegate {
     }
     
     func reloadHome() {
+        noResultsLabel.isHidden = presenter?.restuarents?.count ?? 0 > 0
         blankView.removeFromSuperview()
         blurEffectView.removeFromSuperview()
         tableView.reloadData()

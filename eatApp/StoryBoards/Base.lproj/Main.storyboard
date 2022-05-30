@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="siP-D0-Lld">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="siP-D0-Lld">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -23,6 +23,7 @@
                                 <subviews>
                                     <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search for restuarents or Locations" translatesAutoresizingMaskIntoConstraints="NO" id="Kvj-Yp-4wv">
                                         <rect key="frame" x="0.0" y="69" width="414" height="51"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
@@ -191,17 +192,17 @@
                                 </connections>
                             </tableView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O2I-Oo-nrD">
-                                <rect key="frame" x="87" y="844" width="240" height="30"/>
+                                <rect key="frame" x="112" y="844" width="190" height="30"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ac7-hR-PFh">
-                                        <rect key="frame" x="0.0" y="0.0" width="240" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="190" height="30"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UQB-Bp-JFa" customClass="UIControl">
-                                                <rect key="frame" x="0.0" y="0.0" width="115" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="90" height="30"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MAP VIEW" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gMw-PE-R25">
-                                                        <rect key="frame" x="10" y="5" width="100" height="20"/>
-                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                        <rect key="frame" x="10" y="5" width="75" height="20"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                         <color key="textColor" white="0.0" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -215,7 +216,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y2M-jf-oHY" customClass="UIControl">
-                                                <rect key="frame" x="125" y="0.0" width="115" height="30"/>
+                                                <rect key="frame" x="100" y="0.0" width="90" height="30"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KCF-c3-XlT">
                                                         <rect key="frame" x="0.0" y="5" width="1" height="20"/>
@@ -225,8 +226,8 @@
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FILTER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k2l-ul-QJD">
-                                                        <rect key="frame" x="10" y="5" width="95" height="20"/>
-                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                        <rect key="frame" x="10" y="5" width="70" height="20"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                         <color key="textColor" white="0.0" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -255,7 +256,7 @@
                                     <constraint firstAttribute="height" constant="30" id="92Z-qH-gDU"/>
                                     <constraint firstItem="ac7-hR-PFh" firstAttribute="top" secondItem="O2I-Oo-nrD" secondAttribute="top" id="fue-O8-0wh"/>
                                     <constraint firstItem="ac7-hR-PFh" firstAttribute="leading" secondItem="O2I-Oo-nrD" secondAttribute="leading" id="smh-6o-Rfi"/>
-                                    <constraint firstAttribute="width" constant="240" id="v5Y-AM-X48"/>
+                                    <constraint firstAttribute="width" constant="190" id="v5Y-AM-X48"/>
                                     <constraint firstAttribute="trailing" secondItem="ac7-hR-PFh" secondAttribute="trailing" id="wMJ-ik-SIq"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -283,6 +284,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="dv3-Ys-BC6"/>
                     <connections>
+                        <outlet property="noResultsLabel" destination="697-qm-PJy" id="A0g-Tl-VAQ"/>
                         <outlet property="searchBar" destination="Kvj-Yp-4wv" id="mht-F8-qJR"/>
                         <outlet property="tableView" destination="v1b-Ne-N7C" id="jj6-IA-Ggb"/>
                         <segue destination="Pmc-d9-afY" kind="presentation" identifier="showRegion" modalPresentationStyle="fullScreen" id="iRx-Mt-GwG"/>
@@ -417,7 +419,6 @@
         <!--Navigation Controller-->
         <scene sceneID="E2d-kr-9hw">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="NAA-al-BmN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="siP-D0-Lld" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="iqm-lN-HDA">
@@ -429,6 +430,7 @@
                         <segue destination="cma-Ff-TTC" kind="relationship" relationship="rootViewController" id="VVu-d5-01V"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NAA-al-BmN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-86.956521739130437" y="-79.017857142857139"/>
         </scene>
@@ -889,7 +891,7 @@
         <image name="embty_box" width="65" height="65"/>
         <image name="location.north" catalog="system" width="108" height="128"/>
         <namedColor name="green">
-            <color red="0.38823529411764707" green="0.71372549019607845" blue="0.3529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.3880000114440918" green="0.71399998664855957" blue="0.3529999852180481" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="separatorColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
