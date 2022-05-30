@@ -145,10 +145,9 @@
 			isa = PBXGroup;
 			children = (
 				121BA3942840931900C62EEB /* Cells */,
-				121BA38B283F902D00C62EEB /* RegionSelectorViewController.swift */,
-				121BA38D283F90CA00C62EEB /* HomeViewController.swift */,
-				12E65AFA28422FBA00F2A1DA /* FilterViewController.swift */,
-				12E65B022843900900F2A1DA /* FilterDetailViewController.swift */,
+				1269D962284479A7005B9B49 /* Region */,
+				1269D9612844799E005B9B49 /* Home */,
+				1269D96028447990005B9B49 /* Filter */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -192,6 +191,31 @@
 				121BA3962840B46000C62EEB /* HomePresenter.swift */,
 			);
 			path = Presenters;
+			sourceTree = "<group>";
+		};
+		1269D96028447990005B9B49 /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				12E65AFA28422FBA00F2A1DA /* FilterViewController.swift */,
+				12E65B022843900900F2A1DA /* FilterDetailViewController.swift */,
+			);
+			path = Filter;
+			sourceTree = "<group>";
+		};
+		1269D9612844799E005B9B49 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				121BA38D283F90CA00C62EEB /* HomeViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		1269D962284479A7005B9B49 /* Region */ = {
+			isa = PBXGroup;
+			children = (
+				121BA38B283F902D00C62EEB /* RegionSelectorViewController.swift */,
+			);
+			path = Region;
 			sourceTree = "<group>";
 		};
 		12F247522841240A00B1A5BE /* ActivityIndicator */ = {

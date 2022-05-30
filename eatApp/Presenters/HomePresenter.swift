@@ -38,6 +38,7 @@ class HomePresenter {
     var limit = 0
     
     func checkIfRegionIdSet() {
+        // check if region id is set and show region selector
         if self.regionId == nil {
             // show region selctor
             self.delegate?.showRegionLocator?()
@@ -90,20 +91,23 @@ class HomePresenter {
             self.createAndAppendAllNeighbourHood()
         }
     }
-    
+
     func createAndAppendAllCuisine() {
+        // Create All Cusines to append cusines array
         let attr = CusinesAttributes(name: "All Cuisines")
         let cuisine = CuisinesData(id: "00000", type: "cuisine", attributes: attr)
         self.cuinesArray?.insert(cuisine, at: 0)
     }
     
     func createAndAppendAllNeighbourHood() {
+        // Create All Neighbourhood to append cusines array
         let attr = CusinesAttributes(name: "All Neighbourhoods")
         let cuisine = CuisinesData(id: "00000", type: "neighbourhoods", attributes: attr)
         self.neighbourhoodArray?.insert(cuisine, at: 0)
     }
     
     func getFilterTextForCusines() -> String {
+        // Get All Selected Cusines and return as single string as comma seperated for filter
         var string = ""
         for each in self.selectedCuisine {
             if string == "" {
@@ -116,6 +120,7 @@ class HomePresenter {
     }
     
     func getFilterTextForNeighbourhood() -> String {
+        // Get All Selected Neighbourhood and return as single string as comma seperated for filter
         var string = ""
         for each in self.selectedNeighbourhood {
             if string == "" {
@@ -128,6 +133,7 @@ class HomePresenter {
     }
     
     func getIdsForNeighbourhood() -> String {
+        // Get All Selected Neighbourhood and return as single string of ids as comma seperated for api call
         var string = ""
         for each in self.selectedNeighbourhood {
             if string == "" {
@@ -140,6 +146,7 @@ class HomePresenter {
     }
     
     func getIdsForCusisines() -> String {
+        // Get All Selected Cusisines and return as single string of ids as comma seperated for api call
         var string = ""
         for each in self.selectedCuisine {
             if string == "" {
@@ -152,6 +159,7 @@ class HomePresenter {
     }
     
     func finalFilterApply() {
+        // create filter api calls based on cusine selction and neighbourhood selection
         filterCompletedURL = ""
         if selectedCuisine.count > 0 {
             filterCompletedURL = getIdsForCusisines()
@@ -169,6 +177,7 @@ class HomePresenter {
     }
     
     func makeAPICallForSearch() {
+        // api call for search query
         let searchQuery = "&q=\(self.searchKey)"
         let finalurl = APPURL.Restuarents.restuarents + searchQuery
         makeAPICallForRestuarents(url: finalurl, isfilterAPICalled: true)

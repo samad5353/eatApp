@@ -11,11 +11,11 @@ class FilterDetailViewController: UIViewController {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    @objc var applyFilter: (() -> Void)?
-    
     var presenter: HomePresenter?
     var tempSelectedArray = [CuisinesData?]()
+    @objc var applyFilter: (() -> Void)?
     
+// MARK: - Life Cycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         titleLabel.text = presenter?.filterListingMode == .cusine ? "Cuisines" : "Neighbourhood"
@@ -27,7 +27,7 @@ class FilterDetailViewController: UIViewController {
             }
         }
     }
-    
+// MARK: - IBACtion
     @IBAction func backButtonClicked(_ sender: UIControl) {
         self.navigationController?.popViewController(animated: true)
     }
@@ -42,7 +42,7 @@ class FilterDetailViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
 }
-
+// MARK: - TableView Delegates
 extension FilterDetailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -63,19 +63,22 @@ extension FilterDetailViewController: UITableViewDelegate, UITableViewDataSource
         if let cell = tableView.cellForRow(at: indexPath) as? FilterDetailTableViewCell {
             if cell.selectionImageView.isHighlighted {
                 if presenter?.filterListingMode == .cusine {
-                    // remove items from selected index
+                    // remove items from selected
                     let selectedCusine = presenter?.cuinesArray?[indexPath.row]
                     tempSelectedArray = tempSelectedArray.filter { $0?.id != selectedCusine?.id }
                     self.tableView.reloadData()
                 } else {
+                    // remove items from selected
                     let selectedneigh = presenter?.neighbourhoodArray?[indexPath.row]
                     tempSelectedArray = tempSelectedArray.filter { $0?.id != selectedneigh?.id }
                     self.tableView.reloadData()
                 }
             } else {
                 if presenter?.filterListingMode == .cusine {
+                    // Add items to selected
                     let selectedCusine = presenter?.cuinesArray?[indexPath.row]
                     if tempSelectedArray.count > 0, selectedCusine?.id == "00000" {
+                        // make selection of all cusines
                         tempSelectedArray.removeAll()
                         self.tableView.reloadData()
                         return
@@ -83,8 +86,10 @@ extension FilterDetailViewController: UITableViewDelegate, UITableViewDataSource
                     tempSelectedArray.append(selectedCusine)
                     self.tableView.reloadData()
                 } else {
+                    // Add items to selected
                     let neigh = presenter?.neighbourhoodArray?[indexPath.row]
                     if tempSelectedArray.count > 0, neigh?.id == "00000" {
+                        // make selection of all neighbourhood
                         tempSelectedArray.removeAll()
                         self.tableView.reloadData()
                         return

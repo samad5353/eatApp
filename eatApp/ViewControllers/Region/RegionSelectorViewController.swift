@@ -20,7 +20,7 @@ class RegionSelectorViewController: UIViewController {
         presenter?.getRegionsFromAPI()
     }
 }
-
+// MARK: - CollectionView Delegates
 extension RegionSelectorViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -46,9 +46,8 @@ extension RegionSelectorViewController: UICollectionViewDelegate, UICollectionVi
         }
     }
 }
-
+// MARK: - RegionPresenter Delegates
 extension RegionSelectorViewController: RegionPresenterDelegate {
-    
     func reloadRegions() {
         self.collectionView.reloadData()
     }

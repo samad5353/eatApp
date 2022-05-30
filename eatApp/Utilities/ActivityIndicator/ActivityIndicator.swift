@@ -32,7 +32,6 @@ class ActivityIndicator: UIView {
         animationView.loopMode = .loop
         self.addSubview(animationView)
         animationView.play{ (finished) in
-            // Do Something
         }
     }
 }

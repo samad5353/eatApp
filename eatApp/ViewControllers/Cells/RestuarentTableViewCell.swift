@@ -8,7 +8,8 @@
 import UIKit
 
 class RestuarentTableViewCell: UITableViewCell {
-
+    
+    // MARK: - IBOutlets
     @IBOutlet weak var restuarentName: UILabel!
     @IBOutlet weak var restuarentLocation: UILabel!
     @IBOutlet weak var restuarentCuisine: UILabel!
@@ -26,7 +27,8 @@ class RestuarentTableViewCell: UITableViewCell {
         restuarentPriceContainer.layer.borderWidth = 0.5
         restuarentPriceContainer.layer.borderColor = UIColor.white.cgColor
     }
-
+    
+    // MARK: - SetupCell
     func setupCell(items: RestaurentData?) {
         self.restuarentName.text = items?.attributes?.name
         self.restuarentLocation.text = items?.attributes?.addressLine1
@@ -38,6 +40,8 @@ class RestuarentTableViewCell: UITableViewCell {
         self.restuarentPriceIndicator.text = getPriceIndicator(range: items?.attributes?.priceLevel ?? 0)
     }
     
+    // MARK: - GetPriceIndicator
+    // This method used to get $ symbol from Integer Value
     private func getPriceIndicator(range: Int) -> String {
         switch range {
         case 1:

@@ -8,16 +8,15 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-
+// MARK: - IB Outlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var noResultsLabel: UILabel!
-    
     var presenter: HomePresenter?
     var searchActive : Bool = false
     let blankView = UIView(frame: CGRect(x: 0, y: 120, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 120))
     let blurEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
-    
+// MARK: - Life Cycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter = HomePresenter()
@@ -29,10 +28,10 @@ class HomeViewController: UIViewController {
         self.performSegue(withIdentifier: "showFilter", sender: nil)
     }
 }
-
+// MARK: - HomePresenter Delegates
 extension HomeViewController: HomePresenterDelegate {
     func showRegionLocator() {
-        // show region vc and set region id
+        // show region view controller and set region id for api call
         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         if let viewController = storyboard.instantiateViewController(withIdentifier: "RegionSelectorViewController") as? RegionSelectorViewController {
             viewController.onSelectedRegion = {
@@ -41,7 +40,7 @@ extension HomeViewController: HomePresenterDelegate {
             self.navigationController?.present(viewController, animated: true, completion: nil)
         }
     }
-    
+    // Reload Home page delegate method after api calls
     func reloadHome() {
         noResultsLabel.isHidden = presenter?.restuarents?.count ?? 0 > 0
         blankView.removeFromSuperview()
@@ -49,7 +48,7 @@ extension HomeViewController: HomePresenterDelegate {
         tableView.reloadData()
     }
 }
-
+// MARK: - TableView Delegates
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -75,7 +74,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
 }
-
+// MARK: - Prepare For Segue
 extension HomeViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showFilter" {
@@ -85,9 +84,8 @@ extension HomeViewController {
         }
     }
 }
-
+// MARK: - Search Bar Delegates
 extension HomeViewController: UISearchBarDelegate {
-    
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         searchActive = false
         blankView.removeFromSuperview()

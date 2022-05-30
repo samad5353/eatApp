@@ -12,14 +12,13 @@ class FilterViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet var priceSelectionCollection: [UIControl]!
     @IBOutlet var priceSelectionLabelCollection: [UILabel]!
-    
     var presenter: HomePresenter?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
     }
-    
+    // setup inital ui for filters
     private func setupView() {
         for each in priceSelectionCollection {
             each.layer.cornerRadius = 5
@@ -39,7 +38,7 @@ class FilterViewController: UIViewController {
         }
     }
 }
-
+// MARK: - IBAction Methods
 extension FilterViewController {
     
     @IBAction func cancelButtonClicked(_ sender: UIButton) {
@@ -56,6 +55,7 @@ extension FilterViewController {
     }
     
     @IBAction func resetButtonClicked(_ sender: UIButton) {
+        // reset all filter values to initial level
         presenter?.selectedCuisine.removeAll()
         presenter?.selectedNeighbourhood.removeAll()
         presenter?.selectedPriceRange = 0
@@ -65,17 +65,20 @@ extension FilterViewController {
     }
     
     @IBAction func priceSelectionButtonClicked(_ sender: UIControl) {
+        // setup pricerange ui
         for each in priceSelectionCollection {
             if each.tag == sender.tag {
+                // make selection color for price range
                 sender.backgroundColor = UIColor(named: "green")
                 presenter?.selectedPriceRange = sender.tag
             } else {
+                // unselection color logic
                 each.backgroundColor = .clear
                 each.layer.borderWidth = 1
                 each.layer.borderColor = UIColor.separator.cgColor
             }
         }
-        
+        // Label UI Setups for price filter
         for each in priceSelectionLabelCollection {
             if each.tag == sender.tag {
                 each.textColor = .white
@@ -96,7 +99,7 @@ extension FilterViewController {
         }
     }
 }
-
+// MARK: - TableView Delegates
 extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -107,6 +110,7 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "FilterTableViewCell", for: indexPath) as? FilterTableViewCell else { return UITableViewCell() }
         cell.filterLabel.text = presenter?.filterArray[indexPath.row]
         if indexPath.row == 0 {
+            // setup filter label for cuisines
             cell.filterType.text = ""
             if presenter?.selectedCuisine.count == 0 || presenter?.selectedCuisine.count == nil {
                 cell.filterType.text = "(all)"
@@ -115,6 +119,7 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.filterType.text = presenter?.getFilterTextForCusines()
             }
         } else {
+            // setup filter label for neighbourhood
             cell.filterType.text = ""
             if presenter?.selectedNeighbourhood.count == 0 || presenter?.selectedNeighbourhood.count == nil {
                 cell.filterType.text = "(all)"

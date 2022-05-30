@@ -10,6 +10,7 @@ import AlamofireImage
 
 class RegionCollectionViewCell: UICollectionViewCell {
     
+    // MARK: - IBOutlets
     @IBOutlet weak var regionImage: UIImageView!
     @IBOutlet weak var regionName: UILabel!
     @IBOutlet weak var containerView: UIView!
@@ -18,6 +19,7 @@ class RegionCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
     }
     
+    // MARK: - SetupCell
     func setupCell(items: RegionData?) {
         self.containerView.layer.applyRegionCardsShadowCell()
         if let imageURL = items?.attributes?.imageURL, let url = URL(string:imageURL ) {
