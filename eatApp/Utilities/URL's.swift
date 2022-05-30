@@ -14,7 +14,7 @@ struct APPURL {
         static let regions = "regions?"
     }
     struct Restuarents {
-        static let restuarents = "restaurants?page=%d"
+        static let restuarents = "restaurants?page=%d&region_id=%@"
     }
     struct Cuisines {
         static let cuisines = "cuisines?"

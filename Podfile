@@ -7,7 +7,6 @@ target 'eatApp' do
 
   # Pods for eatApp
 
-pod 'RealmSwift'
 pod 'Alamofire'
 pod 'SwiftyBeaver'
 pod 'lottie-ios'

@@ -49,7 +49,7 @@ class HomePresenter {
     
     func makeAPICallForRestuarents(url: String = APPURL.Restuarents.restuarents, isfilterAPICalled: Bool = false) {
         // make api call
-        let url = String(format: url, currentPage)
+        let url = String(format: url, currentPage, regionId ?? "")
         NetworkManager.shared.makeAPI(urlString: url, method: .get) { (response: RestuarentsCD?) in
             if response == nil {
                 // throw error
@@ -164,7 +164,7 @@ class HomePresenter {
             }
         }
         let finalURL = APPURL.Restuarents.restuarents + filterCompletedURL
-        let url = String(format: finalURL, currentPage)
+        let url = String(format: finalURL, currentPage, regionId ?? "")
         makeAPICallForRestuarents(url: url, isfilterAPICalled: true)
     }
     
